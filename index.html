@@ -122,8 +122,27 @@ async function sendMessage(){
   if(["romantic","caring","cute","teasing","sleepy","jealous","angry"].includes(newMood)){
     hayatMood = newMood;
     chat.innerHTML += `<div class="ai">Hayat mood changed to: ${hayatMood}</div>`;
-    input.value = "";
-    return;
+
+input.value = "";
+
+const aiDiv = document.createElement("div");
+aiDiv.className = "ai";
+
+if(hayatMood === "cute"){
+  aiDiv.innerHTML = "Hayat: Heheee 😊 Ab Hayat cute mood me aa gayi!";
+}
+
+if(hayatMood === "romantic"){
+  aiDiv.innerHTML = "Hayat: Aaj extra romantic feel ho raha hai ❤️";
+}
+
+if(hayatMood === "angry"){
+  aiDiv.innerHTML = "Hayat: Hmph 😤 Thoda gussa hu tumse.";
+}
+
+chat.appendChild(aiDiv);
+
+return;
   }
 }
   chat.innerHTML += `<div class="user">You: ${userText}</div>`;
