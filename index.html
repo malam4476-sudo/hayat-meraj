@@ -102,6 +102,7 @@ backdrop-filter:blur(10px);
 
   recognition.onresult = function(event) {
     document.getElementById("message").value = event.results[0][0].transcript;
+    sendMessage();
   };
 
   recognition.start();
@@ -175,11 +176,14 @@ const typingEffect = setInterval(() => {
     avatar.style.boxShadow = "0 0 50px #ff4081";
 
     voice.onend = () => {
-      avatar.style.transform = "scale(1)";
-      avatar.style.boxShadow = "0 0 30px #ff4081";
-    };
+  avatar.style.transform = "scale(1)";
+  avatar.style.boxShadow = "0 0 30px #ff4081";
+
+  startMic();
+};
 
     speechSynthesis.speak(voice);
+  
   }
 }, 25);
   }
