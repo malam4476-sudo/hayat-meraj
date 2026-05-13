@@ -151,29 +151,27 @@ const typingEffect = setInterval(() => {
   i++;
 
   if(i > aiReply.length){
-    clearInterval(typingEffect);
-  }
+  clearInterval(typingEffect);
+
+  const voice = new SpeechSynthesisUtterance(aiReply);
+  voice.lang = "hi-IN";
+  voice.rate = 0.82;
+  voice.pitch = 1.28;
+  voice.volume = 1;
+
+  const avatar = document.getElementById("avatar");
+  avatar.style.transform = "scale(1.05)";
+  avatar.style.boxShadow = "0 0 50px #ff4081";
+
+  voice.onend = () => {
+    avatar.style.transform = "scale(1)";
+    avatar.style.boxShadow = "0 0 30px #ff4081";
+  };
+
+ speechSynthesis.speak(voice);
+}
 
 }, 25);
- const voice = new SpeechSynthesisUtterance(aiReply);
-
-voice.lang = "hi-IN";
-voice.rate = 0.82;
-voice.pitch = 1.28;
-voice.volume = 1;
-
-const avatar = document.getElementById("avatar");
-
-avatar.style.transform = "scale(1.05)";
-avatar.style.boxShadow = "0 0 50px #ff4081";
-
-voice.onend = () => {
-  avatar.style.transform = "scale(1)";
-  avatar.style.boxShadow = "0 0 30px #ff4081";
-};
-
-speechSynthesis.speak(voice);
-}
 </script>
 
 </body>
