@@ -98,9 +98,15 @@ async function sendMessage(){
 
   const data = await response.json();
 
-  const aiReply =
-    data.candidates[0].content.parts[0].text;
+  let aiReply = "Hayat is thinking...";
 
+if (
+  data.candidates &&
+  data.candidates.length > 0 &&
+  data.candidates[0].content.parts.length > 0
+) {
+  aiReply = data.candidates[0].content.parts[0].text;
+}
   chat.innerHTML += `<div class="ai">Hayat: ${aiReply}</div>`;
 }
 </script>
