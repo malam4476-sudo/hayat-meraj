@@ -108,6 +108,14 @@ if (
   aiReply = data.candidates[0].content.parts[0].text;
 }
   chat.innerHTML += `<div class="ai">Hayat: ${aiReply}</div>`;
+  const voice = new SpeechSynthesisUtterance(aiReply);
+
+voice.lang = "hi-IN";
+voice.rate = 0.82;
+voice.pitch = 1.28;
+voice.volume = 1;
+
+speechSynthesis.speak(voice);
 }
 </script>
 
