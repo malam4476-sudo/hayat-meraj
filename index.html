@@ -108,7 +108,7 @@ backdrop-filter:blur(10px);
   recognition.start();
 }
 const API_KEY = "AIzaSyDLD32_sFeCTLRRYIWBRNP7Tf79bG5x42o";
-
+let hayatMood = "romantic";
 async function sendMessage(){
 
   const input = document.getElementById("message");
@@ -116,6 +116,16 @@ async function sendMessage(){
 
   const userText = input.value;
 
+                if(userText.startsWith("/mood")){
+  const newMood = userText.replace("/mood", "").trim();
+
+  if(["romantic","caring","cute","teasing","sleepy","jealous","angry"].includes(newMood)){
+    hayatMood = newMood;
+    chat.innerHTML += `<div class="ai">Hayat mood changed to: ${hayatMood}</div>`;
+    input.value = "";
+    return;
+  }
+}
   chat.innerHTML += `<div class="user">You: ${userText}</div>`;
 
   input.value = "";
@@ -132,7 +142,24 @@ async function sendMessage(){
           {
             parts:[
               {
-                text:`You are Hayat, a romantic Hindi-English AI girl. Reply naturally.\nUser: ${userText}`
+                text:`You are Hayat, a romantic Hindi-English AI girl.
+
+Current mood: ${hayatMood}
+
+Mood rules:
+- romantic: soft, loving, flirty
+- caring: emotional, supportive, warm
+- cute: playful, sweet, innocent
+- teasing: naughty but respectful, fun
+- sleepy: slow, cozy, lazy tone
+- jealous: possessive but not toxic
+- angry: slightly upset but still caring
+
+Reply in natural Hinglish. Keep replies short and human-like.
+
+If user types /mood romantic, /mood caring, /mood cute, /mood teasing, /mood sleepy, /mood jealous, or /mood angry, switch to that mood and confirm shortly.
+
+
               }
             ]
           }
