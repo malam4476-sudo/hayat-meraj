@@ -137,7 +137,24 @@ if (
 ) {
   aiReply = data.candidates[0].content.parts[0].text;
 }
-  chat.innerHTML += `<div class="ai">Hayat: ${aiReply}</div>`;
+  const aiDiv = document.createElement("div");
+aiDiv.className = "ai";
+chat.appendChild(aiDiv);
+
+let i = 0;
+
+const typingEffect = setInterval(() => {
+
+  aiDiv.innerHTML =
+    "Hayat: " + aiReply.substring(0, i);
+
+  i++;
+
+  if(i > aiReply.length){
+    clearInterval(typingEffect);
+  }
+
+}, 25);
   const voice = new SpeechSynthesisUtterance(aiReply);
 
 voice.lang = "hi-IN";
