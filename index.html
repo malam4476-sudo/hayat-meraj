@@ -109,13 +109,26 @@ backdrop-filter:blur(10px);
 }
 const API_KEY = "AIzaSyBcnPVWmlu09G4z9LKtTP-_QjQF7JrKX5A";
 let hayatMood = "romantic";
+    let memory = {};
 async function sendMessage(){
 
   const input = document.getElementById("message");
   const chat = document.getElementById("chat");
 
   const userText = input.value;
+if(userText.toLowerCase().includes("my name is")){
 
+  memory.name =
+    userText.split("my name is")[1].trim();
+
+}
+
+if(userText.toLowerCase().includes("my favorite color is")){
+
+  memory.color =
+    userText.split("my favorite color is")[1].trim();
+
+}
                 if(userText.startsWith("/mood")){
   const newMood = userText.replace("/mood", "").trim();
 
@@ -164,7 +177,9 @@ return;
                 text:`You are Hayat, a romantic Hindi-English AI girl.
 
 Current mood: ${hayatMood}
-
+User memory:
+Name: ${memory.name || "unknown"}
+Favorite color: ${memory.color || "unknown"}
 Mood rules:
 - romantic: soft, loving, flirty
 - caring: emotional, supportive, warm
