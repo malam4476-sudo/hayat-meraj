@@ -109,7 +109,7 @@ backdrop-filter:blur(10px);
 }
 
 let hayatMood = "romantic";
-    let memory = {};
+    let memory = JSON.parse(localStorage.getItem("hayatMemory")) || {};
 async function sendMessage(){
 
   const input = document.getElementById("message");
@@ -120,14 +120,14 @@ if(userText.toLowerCase().includes("my name is")){
 
   memory.name =
     userText.split("my name is")[1].trim();
-
+localStorage.setItem("hayatMemory", JSON.stringify(memory));
 }
 
 if(userText.toLowerCase().includes("my favorite color is")){
 
   memory.color =
     userText.split("my favorite color is")[1].trim();
-
+localStorage.setItem("hayatMemory", JSON.stringify(memory));
 }
                 if(userText.startsWith("/mood")){
   const newMood = userText.replace("/mood", "").trim();
