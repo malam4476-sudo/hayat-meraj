@@ -35,7 +35,7 @@ User: ${userText}`;
     });
 
     const data = await groqRes.json();
-
+console.log(data);
     const reply = data?.choices?.[0]?.message?.content || "Hayat: Thoda issue aa gaya baby, fir se try karo.";
 
     return res.status(200).json({
