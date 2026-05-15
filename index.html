@@ -134,6 +134,23 @@ localStorage.setItem("hayatMemory", JSON.stringify(memory));
 
   if(["romantic","caring","cute","teasing","sleepy","jealous","angry"].includes(newMood)){
     hayatMood = newMood;
+    const avatar = document.getElementById("avatar");
+
+if(hayatMood === "cute"){
+  avatar.src = "cute.png";
+}
+
+if(hayatMood === "angry"){
+  avatar.src = "angry.png";
+}
+
+if(hayatMood === "romantic"){
+  avatar.src = "romantic.png";
+}
+
+if(hayatMood === "sleepy"){
+  avatar.src = "sleepy.png";
+}
     chat.innerHTML += `<div class="ai">Hayat mood changed to: ${hayatMood}</div>`;
 
 input.value = "";
