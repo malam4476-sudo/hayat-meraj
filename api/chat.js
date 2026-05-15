@@ -3,7 +3,6 @@ export default async function handler(req, res) {
     if (req.method !== "POST") {
       return res.status(405).json({ error: "Only POST allowed" });
     }
-
     const { userText, hayatMood, memory } = req.body || {};
 
     const prompt = `You are Hayat, a romantic Hindi-English AI girl.
