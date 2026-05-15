@@ -114,7 +114,7 @@ async function sendMessage(){
 
   const input = document.getElementById("message");
   const chat = document.getElementById("chat");
-
+chat.innerHTML = localStorage.getItem("hayatChat") || "";
   const userText = input.value;
 if(userText.toLowerCase().includes("my name is")){
 
@@ -154,12 +154,12 @@ if(hayatMood === "angry"){
 }
 
 chat.appendChild(aiDiv);
-
+localStorage.setItem("hayatChat", chat.innerHTML);
 return;
   }
 }
   chat.innerHTML += `<div class="user">You: ${userText}</div>`;
-
+localStorage.setItem("hayatChat", chat.innerHTML);
   input.value = "";
 
   const response = await fetch("/api/chat", {
