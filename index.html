@@ -114,7 +114,7 @@ async function sendMessage(){
 
   const input = document.getElementById("message");
   const chat = document.getElementById("chat");
-chat.innerHTML = localStorage.getItem("hayatChat") || "";
+
   const userText = input.value;
 if(userText.toLowerCase().includes("my name is")){
 
@@ -224,6 +224,8 @@ const typingEffect = setInterval(() => {
   }
 }, 40);
   }
+    document.getElementById("chat").innerHTML =
+  localStorage.getItem("hayatChat") || "";
   </script>
 
 </body>
