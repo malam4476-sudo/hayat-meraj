@@ -201,7 +201,7 @@ const typingEffect = setInterval(() => {
 
   if (i > aiReply.length) {
     clearInterval(typingEffect);
-
+localStorage.setItem("hayatChat", chat.innerHTML);
     const voice = new SpeechSynthesisUtterance(aiReply);
     voice.lang = "hi-IN";
     voice.rate = 0.82;
