@@ -175,6 +175,10 @@ return;
 });
 
   const data = await response.json();
+  if(data.error){
+  chat.innerHTML += `<div class="ai">Hayat: Thoda slow baby 😅 Gemini quota limit hit ho gaya. 1 minute baad try karo.</div>`;
+  return;
+}
 console.log(data);
   let aiReply = "Hayat is thinking...";
 
