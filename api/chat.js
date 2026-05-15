@@ -30,12 +30,10 @@ User: ${userText}`;
 
     const data = await geminiRes.json();
     return res.status(geminiRes.status).json(data);
-
   } catch (error) {
     return res.status(500).json({
       error: "Server error",
       message: error.message
     });
   }
-}
 }
