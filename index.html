@@ -90,9 +90,11 @@ style="width:220px;border-radius:20px;margin-top:10px;display:none;">
 
 <br>
 
-<input id="message" placeholder="Talk to Hayat..." />
-<button onclick="sendMessage()">Send</button>
-<button onclick="startMic()">🎤 Mic</button>
+<button onclick="startMic()" style="font-size:22px;padding:18px 35px;border-radius:50px;">
+🎤 Talk to Hayat
+</button>
+
+<input id="message" style="display:none;" />
   <script>
   function startMic() {
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
