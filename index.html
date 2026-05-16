@@ -227,15 +227,13 @@ chat.appendChild(aiDiv);
 
 let i = 0;
 
-const typingEffect = setInterval(() => {
+const typingEffect = setInterval(async () => {
   aiDiv.innerHTML = "Hayat: " + aiReply.substring(0, i);
   i++;
 
   if (i > aiReply.length) {
     clearInterval(typingEffect);
-localStorage.setItem("hayatChat", chat.innerHTML);
-    aiReply = aiReply.replace(/[^\p{L}\p{N}\p{P}\p{Z}]/gu, "");
-   const voiceRes = await fetch("/api/voice", {
+    const voiceRes = await fetch("/api/voice", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
@@ -252,7 +250,8 @@ const audioUrl = URL.createObjectURL(audioBlob);
 const audio = new Audio(audioUrl);
 
 audio.play();
-  
+localStorage.setItem("hayatChat", chat.innerHTML);
+   
   }
 }, 40);
   }
