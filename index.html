@@ -235,24 +235,23 @@ const typingEffect = setInterval(() => {
     clearInterval(typingEffect);
 localStorage.setItem("hayatChat", chat.innerHTML);
     aiReply = aiReply.replace(/[^\p{L}\p{N}\p{P}\p{Z}]/gu, "");
-    const voice = new SpeechSynthesisUtterance(aiReply);
-    voice.lang = "en-IN";
-    voice.rate = 0.92;
-voice.pitch = 1.15;
-    voice.volume = 1;
+   const voiceRes = await fetch("/api/voice", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    text: aiReply
+  })
+});
 
-    const avatar = document.getElementById("avatar");
-    avatar.style.transform = "scale(1.05)";
-    avatar.style.boxShadow = "0 0 50px #ff4081";
+const audioBlob = await voiceRes.blob();
 
-    voice.onend = () => {
-  avatar.style.transform = "scale(1)";
-  avatar.style.boxShadow = "0 0 30px #ff4081";
+const audioUrl = URL.createObjectURL(audioBlob);
 
-  //startMic();
-};
+const audio = new Audio(audioUrl);
 
-    speechSynthesis.speak(voice);
+audio.play();
   
   }
 }, 40);
