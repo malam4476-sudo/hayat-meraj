@@ -246,6 +246,10 @@ localStorage.setItem("hayatChat", chat.innerHTML);
     document.getElementById("chat").innerHTML =
   localStorage.getItem("hayatChat") || "";
   </script>
-
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
+}
+</script>
 </body>
 </html>
