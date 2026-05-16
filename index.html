@@ -227,6 +227,7 @@ const typingEffect = setInterval(() => {
   if (i > aiReply.length) {
     clearInterval(typingEffect);
 localStorage.setItem("hayatChat", chat.innerHTML);
+    aiReply = aiReply.replace(/[^\p{L}\p{N}\p{P}\p{Z}]/gu, "");
     const voice = new SpeechSynthesisUtterance(aiReply);
     voice.lang = "hi-IN";
     voice.rate = 0.82;
