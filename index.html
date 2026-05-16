@@ -28,6 +28,7 @@ h1{
     #chat{
       width:90%;
       max-width:900px;
+      display:none;
       margin:auto;
       background:rgba(255,255,255,0.06);
 backdrop-filter:blur(10px);
@@ -82,10 +83,16 @@ backdrop-filter:blur(10px);
 <body>
 
 <h1>❤️ Hayat AI ❤️</h1>
-<img id="avatar" src="hayat_face.png" style="width:220px;height:220px;object-fit:cover;border-radius:50%;border:4px solid #ff4081;box-shadow:0 0 30px #ff4081;margin:20px;";box-shadow:0 0 25px #ff4081;">
-  <video id="camera" autoplay playsinline
-style="width:220px;border-radius:20px;margin-top:10px;display:none;">
-</video>
+<img id="avatar" src="hayat_face.png" style="
+width:100vw;
+height:100vh;
+object-fit:cover;
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+">
+
 <div id="chat"></div>
 
 <br>
