@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   try {
     const { text } = req.body || {};
-
+console.log(text);
     const voiceId = "kvQSb3naDTi3sgHwwBC1";
 
     const response = await fetch(
