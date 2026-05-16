@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
   <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#ff4081">
   <title>Hayat AI</title>
@@ -82,6 +83,9 @@ backdrop-filter:blur(10px);
 
 <h1>❤️ Hayat AI ❤️</h1>
 <img id="avatar" src="hayat_face.png" style="width:220px;height:220px;object-fit:cover;border-radius:50%;border:4px solid #ff4081;box-shadow:0 0 30px #ff4081;margin:20px;";box-shadow:0 0 25px #ff4081;">
+  <video id="camera" autoplay playsinline
+style="width:220px;border-radius:20px;margin-top:10px;display:none;">
+</video>
 <div id="chat"></div>
 
 <br>
@@ -250,6 +254,28 @@ localStorage.setItem("hayatChat", chat.innerHTML);
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js");
 }
+  async function startCamera() {
+  const video = document.getElementById("camera");
+
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: true
+    });
+
+    video.srcObject = stream;
+
+    chat.innerHTML += `
+      <div class="ai">
+        Hayat: Aa gaye tum? 😊 Kaisa raha din?
+      </div>
+    `;
+
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+startCamera();
 </script>
 </body>
 </html>
