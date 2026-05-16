@@ -229,9 +229,9 @@ const typingEffect = setInterval(() => {
 localStorage.setItem("hayatChat", chat.innerHTML);
     aiReply = aiReply.replace(/[^\p{L}\p{N}\p{P}\p{Z}]/gu, "");
     const voice = new SpeechSynthesisUtterance(aiReply);
-    voice.lang = "hi-IN";
-    voice.rate = 0.82;
-    voice.pitch = 1.28;
+    voice.lang = "en-IN";
+    voice.rate = 0.92;
+voice.pitch = 1.15;
     voice.volume = 1;
 
     const avatar = document.getElementById("avatar");
